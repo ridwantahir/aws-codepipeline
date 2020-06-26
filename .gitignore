@@ -1,0 +1,13 @@
+/target/
+.cache-main
+.classpath
+.idea/*
+.settings/*
+.cache-tests
+.tmpBin/*
+/bin/
+/resources/ipt/ExpectedOutput/*
+/data/*
+.DS_Store
+checkpoint/
+/checkpoint/
