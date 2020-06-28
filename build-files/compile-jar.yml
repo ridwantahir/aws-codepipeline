@@ -19,7 +19,7 @@ phases:
       - mvn  test
       - mvn clean
       - mvn install
-  finally:
+    finally:
       - echo This always runs even if the install command fails
   post_build:
     commands:
