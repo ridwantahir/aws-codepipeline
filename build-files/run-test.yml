@@ -4,7 +4,7 @@ phases:
   install:
     runtime-versions:
       nodejs: 10
-      java: openjdk8
+      java: corretto8
     commands:
       - echo doint nothing in install commands
   pre_build:
