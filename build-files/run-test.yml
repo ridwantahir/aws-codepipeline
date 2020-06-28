@@ -4,30 +4,25 @@ phases:
   install:
     runtime-versions:
       nodejs: 10
+      java: openjdk8
     commands:
-      - echo Installing Mocha...
-      - npm install -g mocha
+      - echo doint nothing in install commands
   pre_build:
     commands:
-      - echo Installing source NPM dependencies...
-      - npm install
+      - echo doing nothing for pre_buil commands in test stage
   build:
     commands:
-      - echo Build started on `date`
-      - echo Compiling the Node.js code
-      - npm run test
+      - echo Integration test started on `date`
+      - chmod 755 scripts/integaration-test.sh
+      - scripts/integaration-test.sh
+      
   post_build:
     commands:
-      - echo Build completed on `date`
+      - echo integration test completed on `date`
+      - mkdir jar
+      - mv target/code-deploy-test-0.0.1-SNAPSHOT.jar jars/code-deploy-test-0.0.1-SNAPSHOT.jar
 # Include only the files required for your application to run.
 artifacts:
   files:
-    - src/index.js
-    - src/app.js
-    - package.json
-    - node_modules/**/*
-
-
-
-mvn clean
-mvn install
+    - jars/code-deploy-test-0.0.1-SNAPSHOT.jar
+    - conf/

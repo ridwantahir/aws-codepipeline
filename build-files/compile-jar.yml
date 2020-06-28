@@ -4,30 +4,30 @@ phases:
   install:
     runtime-versions:
       nodejs: 10
+      java: openjdk8
     commands:
-      - echo Installing Mocha...
-      - npm install -g mocha
+      - echo doing nothing in install
   pre_build:
     commands:
-      - echo Installing source NPM dependencies...
-      - npm install
+      - echo checking java and maven installations
+      - java -version
+      - mvn -version 
   build:
     commands:
       - echo Build started on `date`
-      - echo Compiling the Node.js code
-      - npm run test
+      - echo Compiling and packaging the source
+      - mvn  test
+      - mvn clean
+      - mvn install
+   	finally:
+      - echo This always runs even if the install command fails
   post_build:
     commands:
       - echo Build completed on `date`
 # Include only the files required for your application to run.
 artifacts:
   files:
-    - src/index.js
-    - src/app.js
-    - package.json
-    - node_modules/**/*
-
-
-
-mvn clean
-mvn install
+    - target/code-deploy-test-0.0.1-SNAPSHOT.jar
+    - build-files/run-test.yml
+    - conf/
+    - scripts/
