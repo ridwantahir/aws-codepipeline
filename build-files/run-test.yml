@@ -19,7 +19,7 @@ phases:
   post_build:
     commands:
       - echo integration test completed on `date`
-      - mkdir jar
+      - mkdir jars
       - mv target/code-deploy-test-0.0.1-SNAPSHOT.jar jars/code-deploy-test-0.0.1-SNAPSHOT.jar
 # Include only the files required for your application to run.
 artifacts:
